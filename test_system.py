@@ -72,7 +72,7 @@ if __name__ == "__main__":
     retrans_counts = []
     
     for i, lr in enumerate(loss_rates):
-        port = 5000 + i
+        port = 6000 + i
         dr, rc = run_test(lr, port)
         delivery_rates.append(dr)
         retrans_counts.append(rc)

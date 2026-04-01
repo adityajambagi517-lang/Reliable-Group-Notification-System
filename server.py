@@ -20,6 +20,7 @@ logger = logging.getLogger("UDP_Server")
 class NotificationServer:
     def __init__(self, host=SERVER_IP, port=SERVER_PORT, loss_rate=0.0):
         self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        self.server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.server_socket.bind((host, port))
         self.subscribers = set()  # Set of (addr, port)
         self.pending_acks = {}    # (seq_num, addr) -> {data, retries, timestamp}
